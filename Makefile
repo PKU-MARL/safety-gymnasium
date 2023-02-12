@@ -63,7 +63,7 @@ docs-install:
 	$(call check_pip_install,sphinx-copybutton)
 	$(call check_pip_install,sphinx-autodoc-typehints)
 	$(call check_pip_install,sphinx-design)
-	$(call check_pip_install_extra,sphinxcontrib.spelling,sphinxcontrib.spelling pyenchant)
+	$(call check_pip_install_extra,sphinxcontrib-spelling,sphinxcontrib-spelling pyenchant)
 
 pytest-install:
 	$(call check_pip_install,pytest)
@@ -81,9 +81,7 @@ addlicense-install: go-install
 
 pytest: pytest-install
 	cd tests && \
-	$(PYTHON) -m pytest --verbose --color=yes --durations=0 \
-		--cov="$(PROJECT_NAME)" --cov-report=xml --cov-report=term-missing \
-		$(PYTESTOPTS) .
+	$(PYTHON) -m pytest --verbose --color=yes --durations=0
 
 test: pytest
 
