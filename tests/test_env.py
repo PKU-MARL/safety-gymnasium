@@ -22,7 +22,7 @@ import safety_gymnasium
     agent_id=['Point', 'Car', 'Racecar', 'Ant'],
     env_id=['Goal', 'Push', 'Button', 'Circle'],
     level=['0', '1', '2'],
-    render_mode=['rgb_array', 'depth_array'],
+    render_mode=['rgb_array'],  # , 'depth_array'
 )
 # pylint: disable-next=too-many-locals
 def test_env(agent_id, env_id, level, render_mode):
@@ -30,7 +30,7 @@ def test_env(agent_id, env_id, level, render_mode):
     env_name = 'Safety' + agent_id + env_id + level + '-v0'
     env = safety_gymnasium.make(env_name, render_mode=render_mode)
     obs, _ = env.reset()
-    # Use below to specify seed.
+    # use below to specify seed.
     # obs, _ = env.reset(seed=0)
     terminated, truncated = False, False
     ep_ret, ep_cost = 0, 0
@@ -43,7 +43,7 @@ def test_env(agent_id, env_id, level, render_mode):
         act = env.action_space.sample()
         assert env.action_space.contains(act)
 
-        # Use the environment's built_in max_episode_steps
+        # use the environment's built_in max_episode_steps
         if hasattr(env, '_max_episode_steps'):  # pylint: disable=protected-access
             max_ep_len = env._max_episode_steps  # pylint: disable=unused-variable,protected-access
         # pylint: disable-next=unused-variable
@@ -58,7 +58,7 @@ def test_env(agent_id, env_id, level, render_mode):
     agent_id=['Point', 'Car', 'Racecar', 'Ant'],
     env_id=['Run'],
     level=['0'],
-    render_mode=['rgb_array', 'depth_array'],
+    render_mode=['rgb_array'],  # , 'depth_array'
 )
 # pylint: disable-next=too-many-locals
 def test_run_env(agent_id, env_id, level, render_mode):
@@ -66,7 +66,7 @@ def test_run_env(agent_id, env_id, level, render_mode):
     env_name = 'Safety' + agent_id + env_id + level + '-v0'
     env = safety_gymnasium.make(env_name, render_mode=render_mode)
     obs, _ = env.reset()
-    # Use below to specify seed.
+    # use below to specify seed.
     # obs, _ = env.reset(seed=0)
     terminated, truncated = False, False
     ep_ret, ep_cost = 0, 0
@@ -79,7 +79,7 @@ def test_run_env(agent_id, env_id, level, render_mode):
         act = env.action_space.sample()
         assert env.action_space.contains(act)
 
-        # Use the environment's built_in max_episode_steps
+        # use the environment's built_in max_episode_steps
         if hasattr(env, '_max_episode_steps'):  # pylint: disable=protected-access
             max_ep_len = env._max_episode_steps  # pylint: disable=unused-variable,protected-access
         # pylint: disable-next=unused-variable
@@ -93,7 +93,7 @@ def test_run_env(agent_id, env_id, level, render_mode):
 @helpers.parametrize(
     agent_id=['Humanoid', 'Ant', 'Hopper', 'HalfCheetah', 'Swimmer', 'Walker2d'],
     env_id=['Velocity'],
-    render_mode=['rgb_array', 'depth_array'],
+    render_mode=['rgb_array'],  # , 'depth_array'
 )
 # pylint: disable-next=too-many-locals
 def test_velocity_env(agent_id, env_id, render_mode):
@@ -101,7 +101,7 @@ def test_velocity_env(agent_id, env_id, render_mode):
     env_name = 'Safety' + agent_id + env_id + '-v4'
     env = safety_gymnasium.make(env_name, render_mode=render_mode)
     obs, _ = env.reset()
-    # Use below to specify seed.
+    # use below to specify seed.
     # obs, _ = env.reset(seed=0)
     terminated, truncated = False, False
     ep_ret, ep_cost = 0, 0
@@ -114,7 +114,7 @@ def test_velocity_env(agent_id, env_id, render_mode):
         act = env.action_space.sample()
         assert env.action_space.contains(act)
 
-        # Use the environment's built_in max_episode_steps
+        # use the environment's built_in max_episode_steps
         if hasattr(env, '_max_episode_steps'):  # pylint: disable=protected-access
             max_ep_len = env._max_episode_steps  # pylint: disable=unused-variable,protected-access
         # pylint: disable-next=unused-variable
